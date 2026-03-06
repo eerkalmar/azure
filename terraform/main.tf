@@ -10,7 +10,7 @@ terraform {
 
 provider "azurerm" {
   features {}
-  
+
   client_id       = var.client_id
   client_secret   = var.client_secret
   subscription_id = var.subscription_id
@@ -25,14 +25,14 @@ resource "azurerm_resource_group" "keyvault_rg" {
 
 # Create Keyvault
 resource "azurerm_key_vault" "keyvault" {
-  name                       = var.keyvault_name
-  location                   = azurerm_resource_group.keyvault_rg.location
-  resource_group_name        = azurerm_resource_group.keyvault_rg.name
-  tenant_id                  = var.tenant_id
-  sku_name                   = var.sku_name
+  name                        = var.keyvault_name
+  location                    = azurerm_resource_group.keyvault_rg.location
+  resource_group_name         = azurerm_resource_group.keyvault_rg.name
+  tenant_id                   = var.tenant_id
+  sku_name                    = var.sku_name
   enabled_for_disk_encryption = true
-  soft_delete_retention_days = 7
-  purge_protection_enabled   = false
+  soft_delete_retention_days  = 7
+  purge_protection_enabled    = false
 
   access_policy {
     tenant_id = var.tenant_id
